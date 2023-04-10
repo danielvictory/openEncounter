@@ -33,7 +33,7 @@ app.use(methodOverride("_method"))
 
 // First Route for Hookup
 app.get('/', (req, res) => {
-    res.send("hello world")
+    res.send(`<h1>Get yr dice ready, kid</h1>`)
 })
 
 // Listening for app
