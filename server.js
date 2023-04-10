@@ -18,7 +18,7 @@ const db = mongoose.connection;
     db.on('disconnected', () => console.log('mongo disconnected'));
 
 // Define Controllers as variables
-// const authorsController = require("./controllers/authors.js")
+ const encountersController = require("./controllers/encounters.js")
 // const articlesController = require("./controllers/articles.js")
 
 // Middleware
@@ -27,17 +27,13 @@ app.use(express.static('public'));
     // Specific methods for language wrangling
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"))
-//     // Controllers
-// app.use('/authors', authorsController)
+     // Controllers
+app.use('/encounters', encountersController)
 // app.use('/articles', articlesController)
 
 // First Route for Hookup
 app.get('/', (req, res) => {
     res.render("home.ejs",)
-})
-
-app.get('/new', (req, res) => {
-    res.render("new.ejs",)
 })
 
 // Listening for app
