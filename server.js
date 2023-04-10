@@ -33,7 +33,11 @@ app.use(methodOverride("_method"))
 
 // First Route for Hookup
 app.get('/', (req, res) => {
-    res.send(`<h1>Get yr dice ready, kid</h1>`)
+    res.render("home.ejs",)
+})
+
+app.get('/new', (req, res) => {
+    res.render("new.ejs",)
 })
 
 // Listening for app
