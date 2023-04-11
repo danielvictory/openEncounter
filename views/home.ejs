@@ -7,18 +7,19 @@
     <title>Open Encounter</title>
 </head>
 <body>
-    <header>
-        <h1>Open Encounter</h1>
-        <nav>
-        </nav>
-    </header>
+
+    <%- include ("./partials/header.ejs") %>
+
     <h2>Welcome to Open Encounter.</h2>
-    <p>This is a simple, savable tool for running your encounters over and over, ad naseum, as much as you like, until your dice rolling hand falls off.</p>
+    <p>A simple, savable tool for running your encounters over and over, ad naseum, as much as you like, until your dice rolling hand falls off.</p>
     <h3>Start your build or log in to keep going!</h3>
 
     <section>
         <form action="/encounters/new" method="GET">
             <input type="submit" value="Create Encounter" />
+        </form>
+        <form action="/encounters" method="GET">
+            <input type="submit" value="See Encounters" />
         </form>
         <button>Log in...</button>
     </section>

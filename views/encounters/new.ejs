@@ -7,6 +7,15 @@
     <title>New Encounter</title>
 </head>
 <body>
-    <h1>NEW</h1>
+
+    <%- include ("../partials/header.ejs") %>
+
+    <h1>New Encounter</h1>
+    <form action="/encounters" method="POST">
+        Title: <input type="text" name="title" /><br />
+        Campaign: <input type="text" name="campaign" /><br />
+        Player Character: <input type="text" name="playerCharacter" /><br />
+        <input type="submit" name="" value="Add Encounter" />
+    </form>
 </body>
 </html>

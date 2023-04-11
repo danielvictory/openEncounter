@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 // Set base Schema
 const encounterSchema = new mongoose.Schema({
     title: {type: String, default: "Anonymous Encounter"},
+    campaign: String,
     playerCharacter: [],
     adversaries: [],
     },

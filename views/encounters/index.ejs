@@ -7,6 +7,38 @@
     <title>Document</title>
 </head>
 <body>
+    
+    <%- include ("../partials/header.ejs") %>
+
     <h1>Encounter Index</h1>
+    <form action="/encounters/new" method="GET">
+        <input type="submit" value="Create Encounter" />
+    </form><br>
+    <table>
+        <!-- <thead>
+            <th>Encounter</th>
+            <th>Run/Edit</th>
+            <th>Delete</th>
+        </thead> -->
+        <tbody>
+            <% encounters.forEach(e => { %>
+            <tr>
+                <td><a href="/encounters/<%=e.id %>"><%=e.title %></a></td>
+                <td>
+                    <form action="/encounters/<%=e.id %>/edit" method="GET">
+                        <input type="submit" value="Run/Edit" />
+                    </form>
+                </td>
+                <td>
+                    <form action="/encounters/<%=e.id %>?_method=DELETE" method="POST">
+                        <input type="submit" value="Delete" />
+                    </form>
+                </td>
+                
+            </tr>
+            <% }) %>
+            
+        <tbody>
+    </table>
 </body>
 </html>
