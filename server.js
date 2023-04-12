@@ -18,6 +18,9 @@ const db = mongoose.connection;
     db.on('connected', () => console.log('mongo connected'));
     db.on('disconnected', () => console.log('mongo disconnected'));
 
+// set call to other functions
+const sidecar = require("./public/sidecar")
+
 // Middleware
     // Session Secrets shhhhhh....
 app.use(session({
@@ -41,12 +44,11 @@ app.use('/sessions', sessionsController)
 const encountersController = require("./controllers/encounters.js")
 app.use('/encounters', encountersController)
 
-// app.use('/articles', articlesController)
-
 // Home/ Landing page connection
 app.get('/', (req, res) => {
     res.render("home.ejs", {
         currentUser: req.session.currentUser,
+        sidecar: sidecar
     })
 })
 

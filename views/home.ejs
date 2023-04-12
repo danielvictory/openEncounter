@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Open Encounter</title>
+    <%- include ('./partials/head.ejs') %>
 </head>
 <body>
 
     <%- include ("./partials/header.ejs") %>
 
     <h2>Welcome to Open Encounter.</h2>
+    <!-- <h2><%= //sidecar.words() %></h2> -->
     <p>A simple, savable tool for running your encounters over and over, ad naseum, as much as you like, until your dice rolling hand falls off.</p>
-    <h3>Start your build or log in to keep going!</h3>
 
-    <section>
+    <section id="home-section">
+        <h3>Start your build</h3>
+        <h3>or</h3>
+        <h3>log in to keep going!</h3>
         <form action="/encounters/new" method="GET">
-            <input type="submit" value="Create Encounter" />
+            <input class="encounter-submit" type="submit" value="Create Encounter" />
         </form>
         <form action="/encounters" method="GET">
-            <input type="submit" value="See Encounters" />
+            <input class="encounter-submit" type="submit" value="See Encounters" />
         </form>
-        <% if(currentUser) { %>
-            <form >
-                <input type="submit" value="Account" />
-            </form>
-        <% } else { %>
-            <form action="/users/new" method="GET">
-                <input type="submit" value="Sign Up" />
-            </form>
-            <form action="/sessions/new" method="GET">
-                <input type="submit" value="Sign In" />
-            </form>
-        <% } %>
+        <section id="home-signs">
+            <% if(currentUser) { %>
+                <form >
+                    <input type="submit" value="Account" />
+                </form>
+            <% } else { %>
+                <form  action="/users/new" method="GET">
+                    <input class="sign sign-up" type="submit" value="Sign Up" />
+                </form>
+                <form action="/sessions/new" method="GET">
+                    <input class="sign sign-in" type="submit" value="Sign In" />
+                </form>
+            <% } %>
+        </section>
     </section>
 
 

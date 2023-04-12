@@ -8,7 +8,8 @@ const userSchema = Schema({
         required: true, },
     password: { 
         type: String, 
-        required: true, }
+        required: true, },
+    encounters: [],
 });
 
 const User = mongoose.model('User', userSchema);
