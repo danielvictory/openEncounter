@@ -14,6 +14,7 @@ const Encounter = require('../models/encounter.js');
 encounterRouter.get('/', async(req, res) => {
     const allEncounters = await Encounter.find({})
     res.render('encounters/index.ejs', {
+        currentUser: req.session.currentUser,
         headerTitle: 'Encounters',
         encounters: allEncounters
     })
@@ -21,7 +22,9 @@ encounterRouter.get('/', async(req, res) => {
 
 // ============== New ==============
 encounterRouter.get('/new', (req, res) => {
-    res.render("encounters/new.ejs",)
+    res.render("encounters/new.ejs",{
+        currentUser: req.session.currentUser,
+    })
 })
 
 // ============= Delete ============
@@ -49,6 +52,7 @@ encounterRouter.post('/', (req, res) => {
 encounterRouter.get("/:id/edit", async (req, res) => {
     const foundE = await Encounter.findById(req.params.id)
     res.render("encounters/edit.ejs", {
+        currentUser: req.session.currentUser,
         encounter: foundE,
     })
 })
@@ -57,6 +61,7 @@ encounterRouter.get("/:id/edit", async (req, res) => {
 encounterRouter.get("/:id", async (req, res) => {
     const foundE = await Encounter.findById(req.params.id)
     res.render("encounters/show.ejs", {
+        currentUser: req.session.currentUser,
         encounter: foundE,
     })
 })

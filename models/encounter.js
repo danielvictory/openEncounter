@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const encounterSchema = new mongoose.Schema({
     title: {type: String, default: "Anonymous Encounter"},
     campaign: String,
+    isPublic: {type: Boolean, default: true},
     playerCharacter: [],
     adversaries: [],
     },

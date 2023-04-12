@@ -1,5 +1,6 @@
 // Set up dependencies in variables to call
 const express = require('express');
+const session = require('express-session')
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 require('dotenv').config();
@@ -17,23 +18,36 @@ const db = mongoose.connection;
     db.on('connected', () => console.log('mongo connected'));
     db.on('disconnected', () => console.log('mongo disconnected'));
 
-// Define Controllers as variables
- const encountersController = require("./controllers/encounters.js")
-// const articlesController = require("./controllers/articles.js")
-
 // Middleware
+    // Session Secrets shhhhhh....
+app.use(session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false,
+}));
     // Use static public folder
 app.use(express.static('public'));
     // Specific methods for language wrangling
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"))
      // Controllers
+        // Users
+const usersController = require('./controllers/users');
+app.use('/users', usersController);
+        // Sessions
+const sessionsController = require('./controllers/sessions')
+app.use('/sessions', sessionsController)
+        // Encounters
+const encountersController = require("./controllers/encounters.js")
 app.use('/encounters', encountersController)
+
 // app.use('/articles', articlesController)
 
-// First Route for Hookup
+// Home/ Landing page connection
 app.get('/', (req, res) => {
-    res.render("home.ejs",)
+    res.render("home.ejs", {
+        currentUser: req.session.currentUser,
+    })
 })
 
 // Listening for app

@@ -21,7 +21,18 @@
         <form action="/encounters" method="GET">
             <input type="submit" value="See Encounters" />
         </form>
-        <button>Log in...</button>
+        <% if(currentUser) { %>
+            <form >
+                <input type="submit" value="Account" />
+            </form>
+        <% } else { %>
+            <form action="/users/new" method="GET">
+                <input type="submit" value="Sign Up" />
+            </form>
+            <form action="/sessions/new" method="GET">
+                <input type="submit" value="Sign In" />
+            </form>
+        <% } %>
     </section>
 
 
