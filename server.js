@@ -34,12 +34,13 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"))
      // Controllers
-        // Users
-const usersController = require('./controllers/users');
-app.use('/users', usersController);
         // Sessions
 const sessionsController = require('./controllers/sessions')
 app.use('/sessions', sessionsController)
+        // Users
+const usersController = require('./controllers/users');
+app.use('/users', usersController);
+
         // Encounters
 const encountersController = require("./controllers/encounters.js")
 app.use('/encounters', encountersController)

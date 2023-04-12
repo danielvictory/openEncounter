@@ -7,7 +7,7 @@
     
     <%- include ("../partials/header.ejs") %>
 
-    <h1>Encounter Index</h1>
+    <h1>Howdy <%= currentUser.email %> </h1>
     <form action="/encounters/new" method="GET">
         <input class="encounter-submit" type="submit" value="Create Encounter" />
     </form><br>
@@ -18,8 +18,7 @@
             <th>Delete</th>
         </thead> -->
         <tbody>
-            <% encounters.forEach(e => { 
-                if (e.isPublic) { %>
+            <% encounters.forEach(e => { %>
             <tr>
                 <td><a href="/encounters/<%=e.id %>"><%=e.title %></a></td>
                 <td>
@@ -34,7 +33,7 @@
                 </td>
                 
             </tr>
-            <% }}) %>
+            <% }) %>
             
         <tbody>
     </table>

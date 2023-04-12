@@ -4,6 +4,10 @@
         <a href="/">Home</a>
         <a href="/encounters">Encounters</a>
         <% if(currentUser) { %>
+            <form action="/users/myencounters" method="GET">
+                <input type="submit" value="My Encounters" />
+            </form>
+
             <form action="/sessions?_method=DELETE" method="POST">
                 <input type="submit" value="Log Out" />
             </form>

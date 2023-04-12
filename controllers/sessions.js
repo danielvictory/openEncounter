@@ -39,6 +39,7 @@ sessionsRouter.post('/', async (req, res) => {
         // Check password match
         if (pwMatch) {
             req.session.currentUser = foundUser;
+            // console.log(req.session.currentUser.email)
             res.redirect('/')
         } else {
             res.send('NO NO NO WRONG PW >:(')

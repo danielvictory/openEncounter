@@ -36,15 +36,34 @@ encounterRouter.delete('/:id', async (req, res) => {
 
 // ============= Update ============
 encounterRouter.put('/:id', async (req, res) => {
-    await Encounter.findByIdAndUpdate(req.params.id, req.body)
+    let b = req.body
+    b.isPublic = b.isPublic === 'on' ? true : false
+
+    await Encounter.findByIdAndUpdate(req.params.id, b)
     res.redirect("/encounters/" + req.params.id)
 })
 
 
 // ============= Create ============
 encounterRouter.post('/', (req, res) => {
+    
+    // const u = req.session.currentUser
+
+    // console.log(req.body)
     const e = new Encounter(req.body)
-    e.save().then(res.redirect('/encounters/'+ e.id))
+    // console.log(e)
+    e.isPublic = req.body.isPublic === "on" ? true : false
+    // console.log(e)
+    e.save()
+
+    if (req.session.currentUser) {
+        //console.log(u._id)
+        req.session.currentUser.encounters.push(e.id)
+        e.createdBy = req.session.currentUser._id
+        //console.log(u)
+        // console.log(e)
+    }
+    res.redirect('/encounters/'+ e.id)
 })
 
 

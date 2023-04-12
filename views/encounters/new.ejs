@@ -8,10 +8,22 @@
     <%- include ("../partials/header.ejs") %>
 
     <h1>New Encounter</h1>
+    <!-- <%= //currentUser.email %> -->
     <form action="/encounters" method="POST">
-        Title: <input type="text" name="title" /><br />
-        Campaign: <input type="text" name="campaign" /><br />
-        Player Character: <input type="text" name="playerCharacter" /><br />
+
+        <label for="isPublic">Display Publicly?</label>
+		<input type="checkbox" name="isPublic" id="isPublic" checked/>
+        <br>
+        
+        Title: <input type="text" name="title" />
+        <br />
+
+        Campaign: <input type="text" name="campaign" />
+        <br />
+
+        Player Character: <input type="text" name="playerCharacter" />
+        <br />
+
         <input type="submit" name="" value="Add Encounter" />
     </form>
 </body>
