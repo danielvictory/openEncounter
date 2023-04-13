@@ -33,7 +33,7 @@ app.use(express.static('public'));
     // Specific methods for language wrangling
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"))
-     // Controllers
+    // Controllers
         // Sessions
 const sessionsController = require('./controllers/sessions')
 app.use('/sessions', sessionsController)

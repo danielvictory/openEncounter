@@ -25,11 +25,21 @@ encounterRouter.get('/', async(req, res) => {
 encounterRouter.get('/new', (req, res) => {
     res.render("encounters/new.ejs",{
         currentUser: req.session.currentUser,
+        pcCount: 1,
+        adversaryCount: 1,
     })
 })
 
 // ============= Delete ============
 encounterRouter.delete('/:id', async (req, res) => {
+    let foundE = await Encounter.findById(req.params.id)
+    let foundU = await User.findById(foundE.createdBy)
+
+    if(foundU){
+        foundU.encounters = foundU.encounters.filter(e => e !== req.params.id)
+        await User.findByIdAndUpdate(foundE.createdBy, foundU)
+    }
+
     await Encounter.findByIdAndDelete(req.params.id)
     res.redirect("/encounters")
 })
@@ -47,11 +57,11 @@ encounterRouter.put('/:id', async (req, res) => {
 
 // ============= Create ============
 encounterRouter.post('/', async (req, res) => {
-    
+
     const e = new Encounter(req.body)
 
     e.isPublic = req.body.isPublic === "on" ? true : false
-    console.log(e)
+    // console.log(e)
 
     if (req.session.currentUser) {
 
@@ -59,10 +69,10 @@ encounterRouter.post('/', async (req, res) => {
         e.createdBy = req.session.currentUser._id
         e.save()
 
-        await User.findByIdAndUpdate(req.session.currentUser._id, {
+        let u = await User.findByIdAndUpdate(req.session.currentUser._id, {
             $push: {encounters: e.id}
         })
-        
+        console.log(u)
         console.log(e)
 
     } else {

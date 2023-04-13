@@ -23,7 +23,7 @@
         </form>
         <section id="home-signs">
             <% if(currentUser) { %>
-                <form >
+                <form action="/users/myencounters" method="GET">
                     <input type="submit" id="sbmt-account" value="Account" />
                 </form>
             <% } else { %>

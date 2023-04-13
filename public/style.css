@@ -41,9 +41,20 @@ h2 {
     margin: 0 0 0 0;
 }
 
+button {
+    background-color: red;
+}
+
 input[type=submit] {
     margin: 5px 0;
 }
+
+/* input[type='checkbox'][aria-disabled="true"] {
+    background-color: black;
+    border: 1px solid black;
+
+    pointer-events: none;
+} */
 
 /* ================== BY ID =================== */
 
@@ -69,6 +80,14 @@ input[type=submit] {
     justify-content: space-evenly;
 
     width: 50%;
+}
+
+#btn-cont-show {
+    width: 50%;
+    max-width: 200px;
+
+    display: flex;
+    justify-content: space-around;
 }
 
 /* ================== BY CLASS =================== */

@@ -8,17 +8,50 @@
     <%- include ("../partials/header.ejs") %>
 
     <h1>Encounter Details</h1>
-    <h2><%=encounter.title %></h2>
-    <span>Campaign: <%=encounter.campaign %></span>
-    <ul>
-        <% encounter.playerCharacter.forEach(p => { %>
-            <li><%=p %></li>
-        <% }) %>
-    </ul>
-    <ul>
-        <% encounter.adversaries.forEach(a => { %>
-            <li><%=a %></li>
-        <% }) %>
-    </ul>
+
+    <% if (currentUser && currentUser._id == encounter.createdBy){ %>
+        <section id="btn-cont-show">
+            <form action="/encounters/<%=encounter._id %>/edit" method="GET">
+                <input type="submit" value="Run/Edit" />
+            </form>
+
+            <form action="/encounters/<%=encounter._id %>?_method=DELETE" method="POST">
+                <input type="submit" value="Delete" />
+            </form>
+        </section>
+    <% } %>
+
+    <!-- <form>
+        <fieldset> -->
+            <fieldset>
+                <legend>Background</legend>
+                <h2><%=encounter.title %></h2>
+                <p>Campaign: <%=encounter.campaign %></p>
+
+                <label for="isPublic">Displayed Publicly? 
+                <input type="checkbox" name="isPublic" id="isPublic" <% if (encounter.isPublic) { %> checked <% } %> disabled/>
+                </label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Player Characters</legend>
+                <ul>
+                    <% encounter.playerCharacter.forEach(p => { %>
+                        <li><%=p %></li>
+                    <% }) %>
+                </ul>
+            </fieldset>
+
+            <fieldset>
+                <legend>Adversaries</legend>
+                
+                <ul>
+                    <% encounter.adversaries.forEach(a => { %>
+                        <li><%=a %></li>
+                    <% }) %>
+                </ul>
+            </fieldset>
+        <!-- </fieldset>
+    </form> -->
 </body>
 </html>

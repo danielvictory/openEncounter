@@ -1,30 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include ('../partials/head.ejs') %>
+    <%- include ('../partials/head.ejs') %> <!-- , {scripts: ["script.js"]} -->
+    
 </head>
 <body>
-
     <%- include ("../partials/header.ejs") %>
 
     <h1>New Encounter</h1>
     <!-- <%= //currentUser.email %> -->
     <form action="/encounters" method="POST">
+        <fieldset>
+            <legend>Background</legend>
 
-        <label for="isPublic">Display Publicly?</label>
-		<input type="checkbox" name="isPublic" id="isPublic" checked/>
-        <br>
-        
-        Title: <input type="text" name="title" />
-        <br />
+            <label for="isPublic">Display Publicly?</label>
+            <input type="checkbox" name="isPublic" id="isPublic" checked/>
+            <br>
+            
+            Title: <input type="text" name="title" />
+            <br />
 
-        Campaign: <input type="text" name="campaign" />
-        <br />
+            Campaign: <input type="text" name="campaign" />
+            <br />
 
-        Player Character: <input type="text" name="playerCharacter" />
-        <br />
+        </fieldset>
+        <fieldset>
+            <legend>Player Characters/ NPC</legend>
 
-        <input type="submit" name="" value="Add Encounter" />
+                Character: <input type="text" name="playerCharacter[0]" />
+                <br />
+
+                <button id="add-character">+</button>
+                <br>
+
+        </fieldset>
+        <fieldset>
+            <legend>Adversaries</legend>
+
+            Adversaries: <input type="text" name="adversaries[0]" />
+            <br />
+
+            <button id="add-adversary">+</button>
+            <br>
+
+        </fieldset>
+        <input type="submit" name="" value="Save Encounter" />
     </form>
 </body>
 </html>
