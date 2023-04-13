@@ -15,17 +15,17 @@ userRouter.get('/myencounters', async (req, res) => {
     const u = req.session.currentUser
     console.log(u)
     if (u) {
-        let encounters = []
+        let es = []
         let x
         for(i=0; i<u.encounters.length; i++) {
             x = await Encounter.findById(u.encounters[i])
-            console.log(x)
-            encounters.push(x)
+            //console.log(x)
+            es.push(x)
         }
-        console.log(encounters)
+        console.log(es)
         res.render('users/index.ejs', {
             currentUser: req.session.currentUser,
-            encounters: encounters,
+            encounters: es,
         })
     } else {
         res.redirect('/')

@@ -8,7 +8,7 @@
     <%- include ("./partials/header.ejs") %>
 
     <h2>Welcome to Open Encounter.</h2>
-    <!-- <h2><%= //sidecar.words() %></h2> -->
+    <h2><%= sidecar.words() %></h2>
     <p>A simple, savable tool for running your encounters over and over, ad naseum, as much as you like, until your dice rolling hand falls off.</p>
 
     <section id="home-section">
@@ -24,7 +24,7 @@
         <section id="home-signs">
             <% if(currentUser) { %>
                 <form >
-                    <input type="submit" value="Account" />
+                    <input type="submit" id="sbmt-account" value="Account" />
                 </form>
             <% } else { %>
                 <form  action="/users/new" method="GET">

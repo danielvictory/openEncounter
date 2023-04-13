@@ -7,6 +7,7 @@ const encounterRouter = express.Router();
 
 // Import Schema
 const Encounter = require('../models/encounter.js');
+const User = require('../models/user.js');
 
 // ============ Routes =============
 
@@ -45,23 +46,27 @@ encounterRouter.put('/:id', async (req, res) => {
 
 
 // ============= Create ============
-encounterRouter.post('/', (req, res) => {
+encounterRouter.post('/', async (req, res) => {
     
-    // const u = req.session.currentUser
-
-    // console.log(req.body)
     const e = new Encounter(req.body)
-    // console.log(e)
+
     e.isPublic = req.body.isPublic === "on" ? true : false
-    // console.log(e)
-    e.save()
+    console.log(e)
 
     if (req.session.currentUser) {
-        //console.log(u._id)
-        req.session.currentUser.encounters.push(e.id)
+
+        console.log(req.session.currentUser._id)
         e.createdBy = req.session.currentUser._id
-        //console.log(u)
-        // console.log(e)
+        e.save()
+
+        await User.findByIdAndUpdate(req.session.currentUser._id, {
+            $push: {encounters: e.id}
+        })
+        
+        console.log(e)
+
+    } else {
+        e.save()
     }
     res.redirect('/encounters/'+ e.id)
 })
