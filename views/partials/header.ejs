@@ -5,11 +5,11 @@
         <a href="/encounters">Encounters</a>
         <% if(currentUser) { %>
             <form action="/users/myencounters" method="GET">
-                <input type="submit" value="My Encounters" />
+                <input type="submit" class="sign-in" value="My Encounters" />
             </form>
 
             <form action="/sessions?_method=DELETE" method="POST">
-                <input type="submit" value="Log Out" />
+                <input type="submit" class="sign-up" value="Log Out" />
             </form>
         <% } else { %>
             <form action="/users/new" method="GET">

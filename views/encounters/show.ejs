@@ -12,11 +12,11 @@
     <% if (currentUser && currentUser._id == encounter.createdBy){ %>
         <section id="btn-cont-show">
             <form action="/encounters/<%=encounter._id %>/edit" method="GET">
-                <input type="submit" value="Run/Edit" />
+                <input type="submit" class="sign-in" value="Edit" />
             </form>
 
             <form action="/encounters/<%=encounter._id %>?_method=DELETE" method="POST">
-                <input type="submit" value="Delete" />
+                <input type="submit" class="sign-up" value="Delete" />
             </form>
         </section>
     <% } %>

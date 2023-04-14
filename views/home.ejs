@@ -24,7 +24,7 @@
         <section id="home-signs">
             <% if(currentUser) { %>
                 <form action="/users/myencounters" method="GET">
-                    <input type="submit" id="sbmt-account" value="Account" />
+                    <input type="submit" id="sbmt-account" class="sign-in"value="Account" />
                 </form>
             <% } else { %>
                 <form  action="/users/new" method="GET">

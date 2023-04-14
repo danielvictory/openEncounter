@@ -42,11 +42,12 @@ h2 {
 }
 
 button {
-    background-color: red;
+    background-color: rgb(100, 34, 34);
 }
 
 input[type=submit] {
     margin: 5px 0;
+    /* background-color: black; */
 }
 
 /* input[type='checkbox'][aria-disabled="true"] {
@@ -132,4 +133,8 @@ input[type=submit] {
 .sign-in:hover {
     background-color: green;
     border-width: thick ;
+}
+
+.btn-add {
+    background-color: lightgreen;
 }
