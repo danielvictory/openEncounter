@@ -7,14 +7,14 @@ as much as you like,
 until your dice rolling hand falls off.
 
 ## Adventuring Gear
-HTML
-CSS
-Javascript
-node.js
-express
-express-sessions
-MongoDB
-Mongoose
+- HTML
+- CSS
+- Javascript
+- node.js
+- express
+- express-sessions
+- MongoDB
+- Mongoose
 
 ## Gettin' Rollin'
 On landing, either 
@@ -25,10 +25,25 @@ On landing, either
 
 If you are logged in to an account, you will be able to save encounters and display them publicly or privately.
 
-These encounters can be editted at will to add or remove players or adversaries.`
+These encounters can be editted at will to add or remove players or adversaries.
 
 ## Lookin' Good
 
+Landing Page
+
+![openEncounter Landing Page](/assets/screenshots/openEncounter-SS-LandingPage.png)
+
+List of Public Open Encounters
+
+![openEncounter All Encounter Page](/assets/screenshots/openEncounter-SS-EncounterList.png)
+
+User Account Encounter List
+
+![openEncounter Account Encounter List Page](/assets/screenshots/openEncounter-SS-AccountList.png)
+
+Encounter Edit
+
+![openEncounter Edit Encounter Page](/assets/screenshots/openEncounter-SS-EditEncounter.png)
 
 ## Awaiting Initiative
 1. Add Adversary data
