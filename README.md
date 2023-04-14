@@ -1,11 +1,10 @@
 # openEncounter
+[A tabletop encounter builder CRUD app using RESTful routes.](https://open-encounter.herokuapp.com/)
 
 A simple, savable tool for running your tabletop encounters over and over, 
 ad naseum, 
 as much as you like, 
 until your dice rolling hand falls off.
-
-a D&amp;D encounter builder CRUD app using RESTful routes, node.js + express, MongoDB + mongoose
 
 ## Adventuring Gear
 HTML
@@ -26,7 +25,7 @@ On landing, either
 
 If you are logged in to an account, you will be able to save encounters and display them publicly or privately.
 
-These encounters can be editted at will to add or remove players or adversaries.
+These encounters can be editted at will to add or remove players or adversaries.`
 
 ## Lookin' Good
 
